@@ -77,7 +77,7 @@
                                                 style="display:inline-block; vertical-align:middle; margin:0;">
                                                 {{ gamelist.gname }}
                                             </h2>
-                                            <img :src="`img/boardgame/${gamelist.image}`" class="img-fluid floating" />
+                                            <img :src="imageSrc(gamelist.image)" class="img-fluid floating" />
                                             <!-- <img :src="gamelist.image" class="img-fluid floating" /> -->
                                             <p></p>
                                             <div>
@@ -115,6 +115,11 @@ export default {
         };
     },
     methods: {
+        imageSrc(image) {
+            // 업로드한 이미지는 data URL, 기본 이미지는 파일명으로 저장됨
+            return image && image.startsWith('data:') ? image : `img/boardgame/${image}`;
+        },
+
         async searchGames() {
         let [p_gname_s, p_gname_e] = this.selectedInitial.split(',');
         let p_player = this.playerCount ? `%${this.playerCount}%` : '%';

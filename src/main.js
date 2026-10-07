@@ -21,7 +21,10 @@ import router from "./router";
 import Argon from "./plugins/argon-kit";
 import './registerServiceWorker'
 import axios from 'axios'
+import mockAdapter from './mockApi'
 
+// 백엔드 없이 /api 요청을 브라우저에서 처리
+axios.defaults.adapter = mockAdapter;
 Vue.prototype.$http = axios;
 
 Vue.config.productionTip = false;

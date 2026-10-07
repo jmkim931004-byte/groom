@@ -104,8 +104,9 @@ export default {
         this.boardGames.player1 = players[0];
         this.boardGames.player2 = players[players.length - 1];
 
-        // 파일명만 있으므로 public 하위 경로와 조합
-        const imgPath = `/img/boardgame/${this.boardGames.image}`;
+        // 업로드한 이미지는 data URL, 기본 이미지는 파일명이므로 public 하위 경로와 조합
+        const image = this.boardGames.image;
+        const imgPath = image && image.startsWith('data:') ? image : `/img/boardgame/${image}`;
         this.imagePreview = imgPath;  // 미리보기용 이미지 URL
         this.boardGames.imagePath = this.boardGames.image;
       } catch (error) {
@@ -150,7 +151,7 @@ export default {
         let p_gname = this.name;
 
         try {
-          axios.post('/api/del', {
+          await axios.post('/api/del', {
             p_gname
           })
 
@@ -218,13 +219,13 @@ export default {
         formData.append('p_url', this.boardGames.url);
 
         try {
-          axios.post('/api/update', formData, {
+          await axios.post('/api/update', formData, {
             headers: { 'Content-Type': 'multipart/form-data' }
           });
           alert('수정 완료하였습니다.');
           this.$router.push('/landing');
         } catch (error) {
-          alert('API 호출 에러:', error);
+          alert('API 호출 에러: ' + error.message);
         }
 
       } else {
@@ -267,13 +268,13 @@ export default {
             formData.append('p_url', this.boardGames.url);
 
             try {
-              axios.post('/api/insert', formData, {
+              await axios.post('/api/insert', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
               });
               alert('신규저장 완료하였습니다.');
               this.$router.push('/landing');
             } catch (error) {
-              alert('API 호출 에러:', error);
+              alert('API 호출 에러: ' + error.message);
             }
 
           }else{
