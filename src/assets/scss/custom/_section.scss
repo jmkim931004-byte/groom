@@ -88,7 +88,7 @@
 
     // Color variations
     .shape-primary {
-        background-image: "img/test.png";
+        background-image: url(/img/test.png);
         background-repeat : no-repeat;
         background-size : cover;
         // background: linear-gradient(150deg, shapes-primary-color("step-1-gradient-bg") 15%, shapes-primary-color("step-2-gradient-bg") 70%, shapes-primary-color("step-3-gradient-bg") 94%);
@@ -115,7 +115,9 @@
     }
 
     .shape-default {
-        background-image: "img/test.png";
+        background-image: url(/img/test.png);
+        background-repeat : no-repeat;
+        background-size : cover;
         // background: linear-gradient(150deg, shapes-default-color("step-1-gradient-bg") 15%, shapes-default-color("step-2-gradient-bg") 70%, shapes-default-color("step-3-gradient-bg") 94%);
 
         //  :nth-child(1) {

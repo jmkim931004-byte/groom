@@ -26,7 +26,7 @@
                                     카카오톡 링크
                                 </base-button>
                             </div>
-                            <img src="\img\test2_1.png" style="width: 200px;" class="img-fluid">
+                            <img src="/img/test2_1.png" style="width: 200px;" class="img-fluid">
                         </div>
                     </div>
                     <div class="row align-items-center justify-content-around stars-and-coded">
